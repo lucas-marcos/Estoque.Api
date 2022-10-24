@@ -37,4 +37,19 @@ public class ProdutoController : ControllerBase
             };
         }
     }
+
+    [HttpGet, Route("listar-todos-produtos")]
+    public object ListarProdutos()
+    {
+        try
+        {
+            var produtos = _produtoServices.ListarTodosProdutos();
+            
+            return new { sucesso = true, produtos };
+        }
+        catch (Exception ex)
+        {
+            return new { sucesso = false, mensagem = "Não foi possível listar os produtos pelo seguinte motivo: " + ex.Message };
+        }
+    }
 }

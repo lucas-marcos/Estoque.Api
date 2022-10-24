@@ -5,20 +5,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Estoque.Api.Repositories;
 
-public class ProdutoRepository : IProdutoRepository
+public class ProdutoRepository :Repository<Produto>, IProdutoRepository
 {
-    private ApplicationDbContext Db;
-    private readonly DbSet<Produto> DbSet;
-    
-    public ProdutoRepository(ApplicationDbContext dbContext)
+    public ProdutoRepository(ApplicationDbContext dbContext) : base(dbContext)
     {
-        Db = dbContext;
-        DbSet = Db.Set<Produto>();
+     
     }
 
     public void CadastrarProduto(Produto produto)
     {
-        DbSet.Add(produto);
-        Db.SaveChanges();
+        Adicionar(produto);
+        Salvar();
     }
 }
