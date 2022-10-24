@@ -13,7 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer("Password=unigoias123456!@#$%;Persist Security Info=True;User ID=lucas.marcos;Initial Catalog=EstoqueApp;Data Source=lucasmarcos.database.windows.net; TrustServerCertificate=True",
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
         p => p.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(180), errorNumbersToAdd: null)), ServiceLifetime.Scoped);
 builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
 
