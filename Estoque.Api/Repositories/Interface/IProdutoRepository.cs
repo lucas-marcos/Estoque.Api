@@ -4,5 +4,5 @@ namespace Estoque.Api.Repositories.Interface;
 
 public interface IProdutoRepository
 {
-    void Criar(Produto produto);
+    void CadastrarProduto(Produto produto);
 }

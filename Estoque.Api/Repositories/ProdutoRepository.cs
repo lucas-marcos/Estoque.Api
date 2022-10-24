@@ -7,8 +7,8 @@ namespace Estoque.Api.Repositories;
 
 public class ProdutoRepository : IProdutoRepository
 {
-    protected ApplicationDbContext Db;
-    protected readonly DbSet<Produto> DbSet;
+    private ApplicationDbContext Db;
+    private readonly DbSet<Produto> DbSet;
     
     public ProdutoRepository(ApplicationDbContext dbContext)
     {
@@ -16,7 +16,7 @@ public class ProdutoRepository : IProdutoRepository
         DbSet = Db.Set<Produto>();
     }
 
-    public void Criar(Produto produto)
+    public void CadastrarProduto(Produto produto)
     {
         DbSet.Add(produto);
         Db.SaveChanges();
