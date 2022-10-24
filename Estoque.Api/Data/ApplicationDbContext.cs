@@ -14,6 +14,6 @@ public class ApplicationDbContext : DbContext
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Password=123456;Persist Security Info=True;User ID=sa;Initial Catalog=EstoqueApp;Data Source=DESKTOP-03NM2TV; TrustServerCertificate=True");
+        optionsBuilder.UseSqlServer("Password=unigoias123456!@#$%;Persist Security Info=True;User ID=lucas.marcos;Initial Catalog=EstoqueApp;Data Source=lucasmarcos.database.windows.net; TrustServerCertificate=True");
     }
 }
