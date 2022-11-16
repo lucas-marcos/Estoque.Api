@@ -7,4 +7,6 @@ public interface IProdutoServices
 {
     void CadastrarProduto(Produto produto);
     List<Produto> ListarTodosProdutos();
+    void RemoverProduto(int id);
+    void AtualizarProduto(Produto toProduto);
 }

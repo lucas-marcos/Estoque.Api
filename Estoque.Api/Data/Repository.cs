@@ -19,6 +19,17 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
     {
         return DbSet;
     }
+    public TEntity BuscarPorId(int id)
+    {
+        return DbSet
+            .Find(id);
+        
+    }
+    
+    public void Remover(int id)
+    {
+        DbSet.Remove(BuscarPorId(id));
+    }
 
     public int Salvar()
     {

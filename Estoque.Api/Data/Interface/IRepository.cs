@@ -6,4 +6,7 @@ public interface IRepository<TEntity>
     int Salvar();
     void Adicionar(TEntity obj);
     void Atualizar(TEntity obj);
+    TEntity BuscarPorId(int id);
+    void Remover(int id);
+
 }

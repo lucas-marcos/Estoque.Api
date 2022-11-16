@@ -44,12 +44,45 @@ public class ProdutoController : ControllerBase
         try
         {
             var produtos = _produtoServices.ListarTodosProdutos();
-            
+
             return new { sucesso = true, produtos };
         }
         catch (Exception ex)
         {
             return new { sucesso = false, mensagem = "Não foi possível listar os produtos pelo seguinte motivo: " + ex.Message };
+        }
+    }
+
+    [HttpGet, Route("deletar-produto")]
+    public object DeletarProuto(int id)
+    {
+        try
+        {
+            _produtoServices.RemoverProduto(id);
+
+            return new { sucesso = true };
+        }
+        catch (Exception ex)
+        {
+            return new { sucesso = false, mensagem = "Não foi possível remover o produto pelo seguinte motivo: " + ex.Message };
+        }
+    }
+
+    [HttpPost, Route("editar-produto")]
+    public object EditarProduto(ProdutoTO produto)
+    {
+        try
+        {
+            if (!produto.IsValid())
+                throw new Exception(string.Join(", ", produto.RetornarErros()));
+
+            _produtoServices.AtualizarProduto(produto.ToProduto());
+            
+            return new { sucesso = true };
+        }
+        catch (Exception ex)
+        {
+            return new { sucesso = false, mensagem = "Não foi possível editar o produto pelo seguinte motivo: " + ex.Message };
         }
     }
 }

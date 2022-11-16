@@ -6,9 +6,10 @@ using FluentValidation;
 
 public class ProdutoTO
 {
+    public int id { get; set; }
     public string Descricao { get; set; }
-    public string Marca { get; set; }
     public string Tipo { get; set; }
+    public string Marca { get; set; }
     public decimal Preco { get; set; }
     public int Quantidade { get; set; }
     public string CodigoDeBarra { get; set; }
@@ -26,11 +27,7 @@ public class ProdutoTO
 
     public Produto ToProduto()
     {
-        var produto = new Produto();
-
-        ObjectExtensions<ProdutoTO, Produto>.Copy(this, produto);
-
-        return produto;
+        return new Produto(id, Descricao, Tipo, Marca, Preco, Quantidade, CodigoDeBarra);
     }
 }
 
